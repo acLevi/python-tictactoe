@@ -38,12 +38,12 @@ class Board():
 
     def show(self):
         print(f'''
- {self._board[7]} | {self._board[8]} | {self._board[9]}
+ {self._board[1]} | {self._board[2]} | {self._board[3]}
 ---+---+---
  {self._board[4]} | {self._board[5]} | {self._board[6]}
 ---+---+---
- {self._board[1]} | {self._board[2]} | {self._board[3]}
-''')
+ {self._board[7]} | {self._board[8]} | {self._board[9]}
+''', end='\r')
 
     def is_full(self):
         full = True
@@ -108,15 +108,11 @@ class Game():
                 break
             else:
                 print('Digite um número.')
-                x = input(prompt)
+                x = input(prompt, end='\r')
         return x
 
     def show_scoreboard(self):
-        print('-'*30)
-        print(f'PLAYER {self.player1.token} | WINS: {self.player1.wins} |')
-        print(f'PLAYER {self.player2.token} | WINS: {self.player2.wins} |')
-        print('-'*30)
-        print(f'PLAYER {self.player_turn.token} TURN')
+        pass
 
     def play(self):
         while True:
@@ -129,7 +125,7 @@ class Game():
                     self.board.mark(move, self.player_turn.token)
                     if self.board.check_win(self.player_turn.token):
                         clear()
-                        print(f'PLAYER {self.player_turn.token} WINS THE ROUND!')
+                        print(f'PLAYER {self.player_turn.token} GANHOU O ROUND!')
                         self.board.show()
                         self.board.reset()
                         sleep(5)
